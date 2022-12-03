@@ -1,6 +1,9 @@
+com\mms\configuration\BeanConfiguration.class
 com\mms\MedicalManagementSystemApplication.class
 com\mms\service\ApplicationImpl.class
 com\mms\model\Book.class
-com\mms\configuration\AutoConfiguration.class
+com\mms\repository\CustomerLoginRepository.class
+com\mms\configuration\FirestoreCollection$Parent.class
 com\mms\service\ApplicationIF.class
+com\mms\configuration\FirestoreCollection.class
 com\mms\controller\ApplicationController.class

@@ -1,3 +1,4 @@
+/*
 package com.mms.configuration;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -11,3 +12,4 @@ import org.springframework.context.annotation.Configuration;
 public class AutoConfiguration {
 
 }
+*/

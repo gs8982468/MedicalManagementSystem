@@ -1,3 +1,5 @@
+D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\configuration\FirestoreCollection.java
+D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\repository\CustomerLoginRepository.java
 D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\controller\ApplicationController.java
 D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\configuration\SwaggerConfig.java
 D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\model\Book.java
@@ -5,3 +7,4 @@ D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\ma
 D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\service\ApplicationIF.java
 D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\MedicalManagementSystemApplication.java
 D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\configuration\AutoConfiguration.java
+D:\Personal Learning\Coding\Springboot\GitHubRepo\MedicalManagementSystem\src\main\java\com\mms\configuration\BeanConfiguration.java

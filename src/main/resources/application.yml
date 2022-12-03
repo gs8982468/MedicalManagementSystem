@@ -18,3 +18,11 @@ spring:
             firestore:
                 project-id: ${PROJECT_ID:valid-might-365117}
                 enabled: true
+
+
+gcp:
+    firestore:
+        collections:
+            parent:
+                prefix: Medical-Management-System/data
+                customerLoginData: Customer-Login-Data
