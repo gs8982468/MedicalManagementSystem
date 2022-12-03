@@ -16,5 +16,5 @@ spring:
             credentials:
                 location: classpath:key.json  
             firestore:
-                project-id: ${PROJECT_ID:qwiklabs-gcp-2a9ed15c791d9269}
+                project-id: ${PROJECT_ID:valid-might-365117}
                 enabled: true

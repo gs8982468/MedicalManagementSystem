@@ -1,0 +1,6 @@
+com\mms\MedicalManagementSystemApplication.class
+com\mms\service\ApplicationImpl.class
+com\mms\model\Book.class
+com\mms\configuration\AutoConfiguration.class
+com\mms\service\ApplicationIF.class
+com\mms\controller\ApplicationController.class
