@@ -1,6 +1,7 @@
 com\mms\pojo\dto\customer\request\CurrentAddress.class
 com\mms\pojo\dto\customer\request\PermanentAddress.class
 com\mms\service\customer\CustomerManagerIF.class
+com\mms\mapper\customer\CustomerMapperImpl.class
 com\mms\pojo\model\customer\AddressEntity$AddressEntityBuilder.class
 com\mms\pojo\dto\customer\request\RegistrationInfo.class
 com\mms\configuration\FirestoreCollection.class
