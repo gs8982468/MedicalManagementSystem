@@ -26,3 +26,4 @@ gcp:
             parent:
                 prefix: Medical-Management-System/data
                 customerLoginData: Customer-Login-Data
+                userData: customer-details

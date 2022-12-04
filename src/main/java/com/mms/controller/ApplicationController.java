@@ -1,8 +1,8 @@
+/*
 package com.mms.controller;
 
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
-import com.mms.model.Book;
 import com.mms.service.ApplicationIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,8 @@ public class ApplicationController {
         return applicationIF.welcomeMessage();
     }
 
-    /*@RequestMapping(value = "/home/fs", method = RequestMethod.GET)
+    */
+/*@RequestMapping(value = "/home/fs", method = RequestMethod.GET)
     public String checkFirestoreConnection(){
         WriteResult writeResult = null;
         try {
@@ -50,7 +51,8 @@ public class ApplicationController {
         }
 //        return new ResponseEntity(writeResult, new HttpHeaders(), HttpStatus.OK);
         return writeResult.getUpdateTime().toString();
-    }*/
+    }*//*
+
 
     @RequestMapping(value = "/home/fss", method = RequestMethod.POST)
     public String save(@RequestBody Book model) {
@@ -59,3 +61,4 @@ public class ApplicationController {
 
 
 }
+*/

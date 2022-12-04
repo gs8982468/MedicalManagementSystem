@@ -1,3 +1,4 @@
+/*
 package com.mms.repository;
 
 import com.google.cloud.firestore.Firestore;
@@ -34,3 +35,4 @@ public class CustomerLoginRepository {
         return writeResult.getUpdateTime().toString();
     }
 }
+*/

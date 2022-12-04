@@ -1,6 +1,7 @@
+/*
 package com.mms.service;
 
-import com.mms.model.Book;
+
 import com.mms.repository.CustomerLoginRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,3 +23,4 @@ public class ApplicationImpl implements ApplicationIF {
         return customerLoginRepository.abc(model);
     }
 }
+*/

@@ -1,4 +1,4 @@
-package com.mms.model;
+package com.mms.pojo.dto;
 
 import com.google.cloud.firestore.annotation.DocumentId;
 import lombok.AllArgsConstructor;

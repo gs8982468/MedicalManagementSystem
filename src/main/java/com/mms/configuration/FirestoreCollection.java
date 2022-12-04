@@ -2,12 +2,9 @@ package com.mms.configuration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.Delegate;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
@@ -39,10 +36,14 @@ public class FirestoreCollection {
         @NotBlank
         private final String customerLoginData;
 
+        @NotBlank
+        private final String userData;
 
-        public Parent(String prefix, String customerLoginData) {
+
+        public Parent(String prefix, String customerLoginData, String userData) {
             this.prefix = prefix;
             this.customerLoginData = prefix.concat(slash).concat(customerLoginData);
+            this.userData = userData;
         }
     }
 
