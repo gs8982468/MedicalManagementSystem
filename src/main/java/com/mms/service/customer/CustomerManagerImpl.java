@@ -26,44 +26,44 @@ public class CustomerManagerImpl implements CustomerManagerIF {
 
     @Override
     public RegistrationInfoResponse doCustomerRegistration(RegistrationInfo registrationInfoRequest) {
-        String registrationDate= getCurrentDate();
-        boolean isEmailSentWithLoginDetails= false;
+        String registrationDate = getCurrentDate();
+        boolean isEmailSentWithLoginDetails = false;
         boolean isRegistrationSuccessful = false;
         List<ErrorResponseMessages> errorResponseMessages = new ArrayList<>();
-        if(!Objects.isNull(registrationInfoRequest)) {
+        if (!Objects.isNull(registrationInfoRequest)) {
 
 
             //validate registration details
-            boolean isMailValid= validationUtils.emailValidation(registrationInfoRequest.getEmailAddress());
-            if(!isMailValid){
+            boolean isMailValid = validationUtils.emailValidation(registrationInfoRequest.getEmailAddress());
+            if (!isMailValid) {
                 errorResponseMessages.add(
                         ErrorResponseMessages.builder()
-                        .errorCode("U-101")
-                        .errorMessage("Invalid email Address")
-                        .build());
+                                .errorCode("U-101")
+                                .errorMessage("Invalid email Address")
+                                .build());
 
             }
-            if( CollectionUtils.isEmpty(errorResponseMessages)){
+            if (CollectionUtils.isEmpty(errorResponseMessages)) {
 
 
-                UserEntity userEntity= CustomerMapper.INSTANCE.mapRegistrationDetailsToUserEntity(registrationInfoRequest);
+                UserEntity userEntity = CustomerMapper.INSTANCE.mapRegistrationDetailsToUserEntity(registrationInfoRequest);
                 userEntity.getRegistrationInfo().setRegistrationDate(registrationDate);
-//            customerRegistrationRepository.saveOrUpdate(userEntity);
+                customerRegistrationRepository.saveOrUpdate(userEntity);
 
-                isRegistrationSuccessful=true;
+                isRegistrationSuccessful = true;
 
 //            implementation to sent mail
-            }else{
-               return  RegistrationInfoResponse.builder()
+            } else {
+                return RegistrationInfoResponse.builder()
                         .isRegistrationSuccessful(isRegistrationSuccessful)
-                        .registrationStatus(isRegistrationSuccessful? "SUCCESS" : "FAILED")
+                        .registrationStatus(isRegistrationSuccessful ? "SUCCESS" : "FAILED")
                         .errorResponseMessages(errorResponseMessages)
                         .build();
             }
         }
         return RegistrationInfoResponse.builder()
                 .isRegistrationSuccessful(isRegistrationSuccessful)
-                .registrationStatus(isRegistrationSuccessful? "SUCCESS" : "FAILED")
+                .registrationStatus(isRegistrationSuccessful ? "SUCCESS" : "FAILED")
                 .createdDate(isRegistrationSuccessful ? registrationDate : null)
                 .isEmailSentWithLoginDetails(isEmailSentWithLoginDetails)
                 .build();

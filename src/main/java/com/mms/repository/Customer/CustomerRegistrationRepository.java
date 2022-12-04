@@ -8,6 +8,8 @@ import com.mms.repository.BaseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
 @RequiredArgsConstructor
 public class CustomerRegistrationRepository implements BaseRepository<UserEntity> {
@@ -16,13 +18,14 @@ public class CustomerRegistrationRepository implements BaseRepository<UserEntity
     private final FirestoreCollection firestoreCollection;
 
     @Override
-    public UserEntity saveOrUpdate(UserEntity entity) {
+    public UserEntity saveOrUpdate(UserEntity userEntity) {
+
+        userEntity.setDocumentId(UUID.randomUUID().toString());
 
         FirestoreUtils.unwrapFuture(
                 firestore.collection(
-                        firestoreCollection.getCustomerLoginData()).document(entity.getDocumentId()).set(entity));
-        return entity;
-
+                        firestoreCollection.getUserData()).document(userEntity.getDocumentId()).set(userEntity));
+        return userEntity;
     }
 
     @Override

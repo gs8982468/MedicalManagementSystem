@@ -43,7 +43,7 @@ public class FirestoreCollection {
         public Parent(String prefix, String customerLoginData, String userData) {
             this.prefix = prefix;
             this.customerLoginData = prefix.concat(slash).concat(customerLoginData);
-            this.userData = userData;
+            this.userData =  prefix.concat(slash).concat(userData);;
         }
     }
 
