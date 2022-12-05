@@ -21,23 +21,72 @@ public class ValidationUtils {
 
     public void validateRegistrationDetails(List<ErrorResponseMessages> errorResponseMessages, RegistrationInfo registrationInfoRequest) {
         validateUserExistancy(registrationInfoRequest, errorResponseMessages);
+        validateMobileNumberExistancy(registrationInfoRequest, errorResponseMessages);
+        validateEmailIdExistancy(registrationInfoRequest, errorResponseMessages);
+        validatePassword(errorResponseMessages, registrationInfoRequest);
         addMailValidationError(errorResponseMessages, registrationInfoRequest);
         addPhoneValidationError(errorResponseMessages, registrationInfoRequest);
         addUserNameValidation(errorResponseMessages, registrationInfoRequest);
 
     }
 
-    private void validateUserExistancy(RegistrationInfo registrationInfoRequest, List<ErrorResponseMessages> errorResponseMessages) {
+    private void validateMobileNumberExistancy(RegistrationInfo registrationInfoRequest, List<ErrorResponseMessages> errorResponseMessages) {
         Map<String, Object> fieldValuePair = new HashMap<>();
-        fieldValuePair.put("userName", registrationInfoRequest.getUserName());
+        fieldValuePair.put("Primary mobile number", registrationInfoRequest.getMobileNumber());
 //            fieldValuePair.put("");
         UserEntity existingUserEntity = customerRegistrationRepository.findByIndexFields(fieldValuePair);
         if(null != existingUserEntity){
             errorResponseMessages.add(
                     ErrorResponseMessages.builder()
                             .errorCode("U-102")
-                            .errorMessage("User already registered")
+                            .errorMessage("This mobile number ("+ registrationInfoRequest.getMobileNumber()+") is already associated with the following username : "+ existingUserEntity.getUserName())
                             .build());
+        }
+    }
+
+    private void validateEmailIdExistancy(RegistrationInfo registrationInfoRequest, List<ErrorResponseMessages> errorResponseMessages) {
+        Map<String, Object> fieldValuePair = new HashMap<>();
+        fieldValuePair.put("Primary email address", registrationInfoRequest.getEmailAddress());
+//            fieldValuePair.put("");
+        UserEntity existingUserEntity = customerRegistrationRepository.findByIndexFields(fieldValuePair);
+        if(null != existingUserEntity){
+            errorResponseMessages.add(
+                    ErrorResponseMessages.builder()
+                            .errorCode("U-102")
+                            .errorMessage("This mail id ("+ registrationInfoRequest.getEmailAddress()+") is already associated with the following username : "+ existingUserEntity.getUserName())
+                            .build());
+        }
+    }
+
+    private void validateUserExistancy(RegistrationInfo registrationInfoRequest, List<ErrorResponseMessages> errorResponseMessages) {
+        Map<String, Object> fieldValuePair = new HashMap<>();
+        fieldValuePair.put("User name", registrationInfoRequest.getUserName());
+//            fieldValuePair.put("");
+        UserEntity existingUserEntity = customerRegistrationRepository.findByIndexFields(fieldValuePair);
+        if(null != existingUserEntity){
+            errorResponseMessages.add(
+                    ErrorResponseMessages.builder()
+                            .errorCode("U-102")
+                            .errorMessage("This user ("+registrationInfoRequest.getUserName()+") already registered")
+                            .build());
+        }
+    }
+
+    private void validatePassword(List<ErrorResponseMessages> errorResponseMessages, RegistrationInfo registrationInfoRequest) {
+        if(null == registrationInfoRequest.getPassword() || null == registrationInfoRequest.getConfirmPassword()){
+            errorResponseMessages.add(
+                    ErrorResponseMessages.builder()
+                            .errorCode("U-106")
+                            .errorMessage("Password or confirm password field is empty")
+                            .build());
+        }else{
+            if(!registrationInfoRequest.getPassword().equals(registrationInfoRequest.getConfirmPassword())){
+                errorResponseMessages.add(
+                        ErrorResponseMessages.builder()
+                                .errorCode("U-107")
+                                .errorMessage("Password not matched")
+                                .build());
+            }
         }
     }
 
@@ -67,11 +116,18 @@ public class ValidationUtils {
                             .errorMessage("please enter mobile number")
                             .build());
         } else {
-            if (registrationInfoRequest.getMobileNumber().length() !=10 ) {
+            if (registrationInfoRequest.getMobileNumber().length() <10 ) {
                 errorResponseMessages.add(
                         ErrorResponseMessages.builder()
                                 .errorCode("PEC-104")
                                 .errorMessage("Mobile number length can not be less that 10")
+                                .build());
+            }
+            if (registrationInfoRequest.getMobileNumber().length() > 10 ) {
+                errorResponseMessages.add(
+                        ErrorResponseMessages.builder()
+                                .errorCode("PEC-104")
+                                .errorMessage("Mobile number length can not be more that 10")
                                 .build());
             }
         }

@@ -17,6 +17,8 @@ public interface CustomerMapper {
 
 
     @Mapping(target = "userName", source = "userName")
+    @Mapping(target = "primaryMobileNumber", source = "mobileNumber")
+    @Mapping(target = "primaryEmailAddress", source = "emailAddress")
     @Mapping(target = "registrationInfo", source = "registrationInfo")
     @Mapping(target = "personalDetails", source = "registrationInfo", qualifiedByName = "mapRegInfoToPersonalDetails")
     @Mapping(target = "loginData", source = "registrationInfo", qualifiedByName = "mapRegInfoToLoginData")

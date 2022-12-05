@@ -29,12 +29,9 @@ public class CustomerRegistrationRepository implements BaseRepository<UserEntity
 
     @Override
     public UserEntity saveOrUpdate(UserEntity userEntity) {
-
-        userEntity.setDocumentId(UUID.randomUUID().toString());
-
         FirestoreUtils.unwrapFuture(
                 firestore.collection(
-                        firestoreCollection.getUserData()).document(userEntity.getDocumentId()).set(userEntity));
+                        firestoreCollection.getUserData()).document(userEntity.getUserName()).set(userEntity));
         return userEntity;
     }
 

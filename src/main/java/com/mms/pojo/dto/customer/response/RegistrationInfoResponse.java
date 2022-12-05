@@ -1,5 +1,6 @@
 package com.mms.pojo.dto.customer.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mms.pojo.dto.ErrorResponseMessages;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,9 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class RegistrationInfoResponse {
+    @JsonProperty("Registration status")
     private String registrationStatus;
+
+    @JsonProperty("IsEmailSentWithLoginDetails")
     private boolean isEmailSentWithLoginDetails;
+
+    @JsonProperty("Creation date")
     private String createdDate;
+
+    @JsonProperty("IsRegistrationSuccessful")
     private boolean isRegistrationSuccessful;
+
+    @JsonProperty("Error Messages")
     private List<ErrorResponseMessages> errorResponseMessages;
 }
