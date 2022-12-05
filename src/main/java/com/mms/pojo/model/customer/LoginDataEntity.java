@@ -14,7 +14,6 @@ public class LoginDataEntity {
     private String previousUserName;
     private boolean isUserActive;
     private boolean isUserLocked;
-
     private String currentPassword;
     private boolean isPasswordChange;
     private String previousPassword;

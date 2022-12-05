@@ -10,8 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class RegistrationInfo {
+    private String firstName;
+    private String lastName;
+    private String userName;
+
     private String emailAddress;
+    private String phoneCode;
     private String mobileNumber;
+
     private String password;
     private String confirmPassword;
 }

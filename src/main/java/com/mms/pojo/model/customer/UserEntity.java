@@ -15,13 +15,10 @@ import javax.persistence.Id;
 public class UserEntity {
     @Id
     private String documentId;
-
     private String userName;
     private boolean isUserNameChanged;
-
     private RegistrationInfoEntity registrationInfo;
     private LoginDataEntity loginData;
     private PersonalDetailsEntity personalDetails;
-
     private boolean isUsersAllDetailsSaved;
 }

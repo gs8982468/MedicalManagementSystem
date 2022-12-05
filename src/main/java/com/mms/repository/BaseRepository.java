@@ -1,5 +1,7 @@
 package com.mms.repository;
 
+import java.util.Map;
+
 public interface BaseRepository<T> {
     /**
      * This methos is used to save or update an entity into firestore collection
@@ -14,4 +16,6 @@ public interface BaseRepository<T> {
      * @return
      */
     T findById(String id);
+
+    T findByIndexFields(Map<String, Object> fieldValuePair);
 }

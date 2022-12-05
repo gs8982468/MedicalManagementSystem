@@ -4,7 +4,6 @@ import com.mms.mapper.customer.CustomerMapper;
 import com.mms.pojo.dto.ErrorResponseMessages;
 import com.mms.pojo.dto.customer.request.RegistrationInfo;
 import com.mms.pojo.dto.customer.response.RegistrationInfoResponse;
-import com.mms.pojo.model.customer.RegistrationInfoEntity;
 import com.mms.pojo.model.customer.UserEntity;
 import com.mms.repository.Customer.CustomerRegistrationRepository;
 import com.mms.utils.ValidationUtils;
@@ -31,21 +30,10 @@ public class CustomerManagerImpl implements CustomerManagerIF {
         boolean isRegistrationSuccessful = false;
         List<ErrorResponseMessages> errorResponseMessages = new ArrayList<>();
         if (!Objects.isNull(registrationInfoRequest)) {
+            validationUtils.validateRegistrationDetails(errorResponseMessages, registrationInfoRequest);
 
-
-            //validate registration details
-            boolean isMailValid = validationUtils.emailValidation(registrationInfoRequest.getEmailAddress());
-            if (!isMailValid) {
-                errorResponseMessages.add(
-                        ErrorResponseMessages.builder()
-                                .errorCode("U-101")
-                                .errorMessage("Invalid email Address")
-                                .build());
-
-            }
+            //save user details to firestore
             if (CollectionUtils.isEmpty(errorResponseMessages)) {
-
-
                 UserEntity userEntity = CustomerMapper.INSTANCE.mapRegistrationDetailsToUserEntity(registrationInfoRequest);
                 userEntity.getRegistrationInfo().setRegistrationDate(registrationDate);
                 customerRegistrationRepository.saveOrUpdate(userEntity);
@@ -68,6 +56,21 @@ public class CustomerManagerImpl implements CustomerManagerIF {
                 .isEmailSentWithLoginDetails(isEmailSentWithLoginDetails)
                 .build();
     }
+
+    private void validateUserExistancy(RegistrationInfo registrationInfoRequest, List<ErrorResponseMessages> errorResponseMessages) {
+        Map<String, Object> fieldValuePair = new HashMap<>();
+        fieldValuePair.put("userName", registrationInfoRequest.getUserName());
+//            fieldValuePair.put("");
+        UserEntity existingUserEntity = customerRegistrationRepository.findByIndexFields(fieldValuePair);
+        if(null != existingUserEntity){
+            errorResponseMessages.add(
+                    ErrorResponseMessages.builder()
+                            .errorCode("U-102")
+                            .errorMessage("User already registered")
+                            .build());
+        }
+    }
+
 
     private static String calculateOfferExpireDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
