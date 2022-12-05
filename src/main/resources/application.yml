@@ -18,6 +18,22 @@ spring:
             firestore:
                 project-id: ${PROJECT_ID:valid-might-365117}
                 enabled: true
+    mail:
+        host: smtp.gmail.com
+        port: 465
+        username: <mail id>
+        password: abc
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+                    ssl:
+                        protocols: TLSv1.2
+                    socketFactory:
+                        class: javax.net.ssl.SSLSocketFactory
 
 
 gcp:
