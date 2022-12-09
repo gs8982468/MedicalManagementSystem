@@ -1,0 +1,5 @@
+com\mms\config\MockDataRetriever.class
+com\mms\constant\UrlConstant.class
+com\mms\constant\ResourceConstant.class
+com\mms\controller\CustomerManagementControllerTest.class
+com\mms\config\IntegrationTestConfiguration.class

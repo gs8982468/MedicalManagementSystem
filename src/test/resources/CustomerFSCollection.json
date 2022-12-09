@@ -1,0 +1,32 @@
+{
+  "userName": "cs12345",
+  "primaryMobileNumber": "7014093634",
+  "primaryEmailAddress": "chandnisharma15nov@gmail.com",
+  "registrationInfo": {
+    "emailAddress": "chandnisharma15nov@gmail.com",
+    "mobileNumber": "7014093634",
+    "password": "abc@123",
+    "registrationDate": "07/12/2022",
+    "userName": "cs12345"
+  },
+  "loginData": {
+    "userName": "cs12345",
+    "currentPassword": "abc@123",
+    "userLocked": false,
+    "passwordChange": false,
+    "passwordExpired": false,
+    "userActive": false
+  },
+  "personalDetails": {
+    "firstName": "Chandni",
+    "lastName": "Sharma",
+    "age": 0,
+    "contactDetails": {
+      "primaryPhoneCode": "+91",
+      "primaryMobileNumber": "7014093634",
+      "primaryEmailAddress": "chandnisharma15nov@gmail.com"
+    }
+  },
+  "usersAllDetailsSaved": false,
+  "userNameChanged": false
+}

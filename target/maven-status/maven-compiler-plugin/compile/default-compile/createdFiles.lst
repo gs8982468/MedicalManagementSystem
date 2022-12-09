@@ -1,5 +1,6 @@
 com\mms\pojo\dto\customer\request\PermanentAddress.class
 com\mms\mapper\customer\CustomerMapperImpl.class
+com\mms\utils\MailSendService.class
 com\mms\pojo\model\customer\LoginDataEntity.class
 com\mms\pojo\dto\ErrorResponseMessages.class
 com\mms\pojo\dto\customer\response\RegistrationInfoResponse$RegistrationInfoResponseBuilder.class
@@ -36,6 +37,7 @@ com\mms\configuration\FirestoreCollection.class
 com\mms\pojo\dto\customer\request\PermanentAddress$PermanentAddressBuilder.class
 com\mms\MedicalManagementSystemApplication.class
 com\mms\pojo\dto\Book.class
+com\mms\configuration\PubSubProperties.class
 com\mms\pojo\model\customer\CurrentAddressEntity$CurrentAddressEntityBuilder.class
 com\mms\pojo\dto\customer\request\ContactDetails.class
 com\mms\utils\ValidationUtils.class

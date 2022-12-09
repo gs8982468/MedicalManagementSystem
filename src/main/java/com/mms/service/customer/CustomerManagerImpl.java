@@ -99,4 +99,15 @@ public class CustomerManagerImpl implements CustomerManagerIF {
         String currentDate = sdf.format(c.getTime());
         return currentDate;
     }
+
+
+    @Override
+    public UserEntity fetchUserDetails(String userName){
+        Map<String, Object> fieldValuePair = new HashMap<>();
+        fieldValuePair.put("User name", userName);
+//            fieldValuePair.put("");
+        UserEntity existingUserEntity = customerRegistrationRepository.findByIndexFields(fieldValuePair);
+
+        return existingUserEntity;
+    }
 }

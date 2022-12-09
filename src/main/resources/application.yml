@@ -43,3 +43,9 @@ gcp:
                 prefix: Medical-Management-System/data
                 customerLoginData: Customer-Login-Data
                 userData: customer-details
+    pubsub:
+        project-id: valid-might-365117
+        topic:
+            costomer_reg: connector-service-customer-reg-topic
+        subscription:
+            customer_reg: connector-service-customer-reg-subscriber

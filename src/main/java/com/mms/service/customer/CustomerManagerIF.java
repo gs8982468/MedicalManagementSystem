@@ -2,6 +2,7 @@ package com.mms.service.customer;
 
 import com.mms.pojo.dto.customer.request.RegistrationInfo;
 import com.mms.pojo.dto.customer.response.RegistrationInfoResponse;
+import com.mms.pojo.model.customer.UserEntity;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -13,4 +14,6 @@ public interface CustomerManagerIF {
      * @return the registration details whether registration is successfull or not
      */
     public RegistrationInfoResponse doCustomerRegistration(RegistrationInfo registrationInfo);
+
+    public UserEntity fetchUserDetails(String userName);
 }

@@ -17,6 +17,7 @@ public class UserEntity {
 
     @Getter(onMethod_ = @PropertyName("User name"))
     @Setter(onMethod_ = @PropertyName("User name"))
+//    @JsonProperty("User name")
     private String userName;
 
     @Getter(onMethod_ = @PropertyName("Primary mobile number"))
