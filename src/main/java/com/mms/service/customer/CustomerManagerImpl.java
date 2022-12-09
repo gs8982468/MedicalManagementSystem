@@ -5,6 +5,8 @@ import com.mms.pojo.dto.ErrorResponseMessages;
 import com.mms.pojo.dto.customer.request.RegistrationInfo;
 import com.mms.pojo.dto.customer.response.RegistrationInfoResponse;
 import com.mms.pojo.model.customer.UserEntity;
+import com.mms.pubsub.configuration.PubSubProperties;
+import com.mms.pubsub.publishers.PubSubService;
 import com.mms.repository.Customer.CustomerRegistrationRepository;
 import com.mms.utils.MailSendService;
 import com.mms.utils.ValidationUtils;
@@ -29,6 +31,12 @@ public class CustomerManagerImpl implements CustomerManagerIF {
     @Autowired
     private MailSendService mailSendService;
 
+    @Autowired
+    private PubSubService pubSubService;
+
+    @Autowired
+    private PubSubProperties pubSubProperties;
+
     @Override
     public RegistrationInfoResponse doCustomerRegistration(RegistrationInfo registrationInfoRequest) {
         String registrationDate = getCurrentDate();
@@ -45,11 +53,15 @@ public class CustomerManagerImpl implements CustomerManagerIF {
                 customerRegistrationRepository.saveOrUpdate(userEntity);
 
                 isRegistrationSuccessful = true;
+                pubSubService.publishMessageToTopic(
+                        pubSubProperties.getGcpProjectId(), pubSubProperties.getMmsTopic(),
+                        userEntity, getHeaders("CustomerRegistration"));
 
 //            implementation to sent mail
                 try{
-                    mailSendService.sendSimpleEmail(userEntity.getPrimaryEmailAddress(),"Welcome to Medical Management System", "Hi "+registrationInfoRequest.getFirstName()+",\n\n Thank you for registration in our portal.\n\nyour mail id is not yet verified. Please click the below link for verification. \n http://localhost:80/internal/mms-portal/medicalManagementSystem/v1/customer/mail/verification \n \nThanks & Regards,\nSubhankar's Team");
-                    isEmailSentWithLoginDetails= true;
+//                    pubSubService.publishMessageToTopic(pubSubProperties.getGcpProjectId(), pubSubProperties.getMmsTopic(), userEntity, getHeaders("CustomerRegistration"));
+//                    mailSendService.sendSimpleEmail(userEntity.getPrimaryEmailAddress(),"Welcome to Medical Management System", "Hi "+registrationInfoRequest.getFirstName()+",\n\n Thank you for registration in our portal.\n\nyour mail id is not yet verified. Please click the below link for verification. \n http://localhost:80/internal/mms-portal/medicalManagementSystem/v1/customer/mail/verification \n \nThanks & Regards,\nSubhankar's Team");
+//                    isEmailSentWithLoginDetails= true;
                 }catch(Exception ex){
                     log.info("Mail sent failed");
                 }
@@ -68,6 +80,13 @@ public class CustomerManagerImpl implements CustomerManagerIF {
                 .isEmailSentWithLoginDetails(isEmailSentWithLoginDetails)
                 .build();
     }
+
+    private Map<String, String> getHeaders(String purpose){
+        Map<String, String> headers= new HashMap<>();
+        headers.put("purpose", purpose);
+        return headers;
+    }
+
 
     private void validateUserExistancy(RegistrationInfo registrationInfoRequest, List<ErrorResponseMessages> errorResponseMessages) {
         Map<String, Object> fieldValuePair = new HashMap<>();

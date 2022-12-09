@@ -5,6 +5,9 @@ server:
     port: ${DEFAULT_PORT:80}
 
 spring:
+    main:
+        allow-bean-definition-overriding: true
+
     cloud:
         config:
             namespace: default
@@ -13,6 +16,10 @@ spring:
             profile: dev, cloud, firestore
             label: master
         gcp:
+            project-id: ${PROJECT_ID:valid-might-365117}
+            pubsub:
+                health:
+                    timeout-mills: 20000
             credentials:
                 location: classpath:key.json  
             firestore:
@@ -46,6 +53,6 @@ gcp:
     pubsub:
         project-id: valid-might-365117
         topic:
-            costomer_reg: connector-service-customer-reg-topic
+            mms: connector-service-mms-topic
         subscription:
             customer_reg: connector-service-customer-reg-subscriber

@@ -41,7 +41,7 @@ public class CustomerManagementControllerTest {
     @Autowired
     private CustomerRegistrationRepository customerRegistrationRepository;
 
-    @Test
+//    @Test
     public void testCustomerRegistration() throws Exception {
 
 
@@ -52,7 +52,7 @@ public class CustomerManagementControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
+//    @Test
     public void fetchUserDetailsTest() throws Exception{
         UserEntity existingUserEntity =mockDataRetriever.getResponseObject(ResourceConstant.CUST_FS_COLLECTION, UserEntity.class);
         Mockito.doReturn(existingUserEntity).when(customerRegistrationRepository).findByIndexFields(Mockito.any(Map.class));
