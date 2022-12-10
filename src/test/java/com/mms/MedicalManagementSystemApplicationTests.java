@@ -1,3 +1,4 @@
+/*
 package com.mms;
 
 import org.junit.jupiter.api.Test;
@@ -11,3 +12,4 @@ class MedicalManagementSystemApplicationTests {
 	}
 
 }
+*/
