@@ -1,0 +1,58 @@
+#set up properties
+PROJECT_ID: valid-might-365117
+
+server:
+    port: ${DEFAULT_PORT:80}
+
+spring:
+    main:
+        allow-bean-definition-overriding: true
+
+    cloud:
+        config:
+            namespace: default
+            enabled: true
+            name: Cloud
+            profile: dev, cloud, firestore
+            label: master
+        gcp:
+            project-id: ${PROJECT_ID:valid-might-365117}
+            pubsub:
+                health:
+                    timeout-mills: 20000
+            credentials:
+                location: classpath:key.json  
+            firestore:
+                project-id: ${PROJECT_ID:valid-might-365117}
+                enabled: true
+    mail:
+        host: smtp.gmail.com
+        port: 465
+        username: <mail id>
+        password: abc
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+                    ssl:
+                        protocols: TLSv1.2
+                    socketFactory:
+                        class: javax.net.ssl.SSLSocketFactory
+
+
+gcp:
+    firestore:
+        collections:
+            parent:
+                prefix: Medical-Management-System/data
+                customerLoginData: Customer-Login-Data
+                userData: customer-details
+    pubsub:
+        project-id: valid-might-365117
+        topic:
+            mms: connector-service-mms-topic
+        subscription:
+            customer_reg: connector-service-customer-reg-subscriber
