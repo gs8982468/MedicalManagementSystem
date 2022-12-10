@@ -23,9 +23,7 @@
     </properties>
     <dependencies>
 
-
-
-
+<!--Added by Subhankar-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -146,6 +144,14 @@
             <artifactId>spring-integration-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+<!-- Added by Amritapo-->
+
+
+
+
+
+
     </dependencies>
 
     <dependencyManagement>
