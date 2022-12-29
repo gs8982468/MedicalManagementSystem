@@ -60,7 +60,7 @@ public class CustomerManagerImpl implements CustomerManagerIF {
 //            implementation to sent mail
                 try{
 //                    pubSubService.publishMessageToTopic(pubSubProperties.getGcpProjectId(), pubSubProperties.getMmsTopic(), userEntity, getHeaders("CustomerRegistration"));
-//                    mailSendService.sendSimpleEmail(userEntity.getPrimaryEmailAddress(),"Welcome to Medical Management System", "Hi "+registrationInfoRequest.getFirstName()+",\n\n Thank you for registration in our portal.\n\nyour mail id is not yet verified. Please click the below link for verification. \n http://localhost:80/internal/mms-portal/medicalManagementSystem/v1/customer/mail/verification \n \nThanks & Regards,\nSubhankar's Team");
+                    mailSendService.sendSimpleEmail(userEntity.getPrimaryEmailAddress(),"Welcome to Medical Management System", "Hi "+registrationInfoRequest.getFirstName()+",\n\n Thank you for registration in our portal.\n\nyour mail id is not yet verified. Please click the below link for verification. \n http://localhost:80/internal/mms-portal/medicalManagementSystem/v1/customer/mail/verification \n \nThanks & Regards,\nSubhankar's Team");
 //                    isEmailSentWithLoginDetails= true;
                 }catch(Exception ex){
                     log.info("Mail sent failed");

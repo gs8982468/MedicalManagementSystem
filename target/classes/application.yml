@@ -1,5 +1,5 @@
 #set up properties
-PROJECT_ID: valid-might-365117
+PROJECT_ID: golden-pillar-371210
 
 server:
     port: ${DEFAULT_PORT:80}
@@ -16,20 +16,20 @@ spring:
             profile: dev, cloud, firestore
             label: master
         gcp:
-            project-id: ${PROJECT_ID:valid-might-365117}
+            project-id: ${PROJECT_ID:golden-pillar-371210}
             pubsub:
                 health:
                     timeout-mills: 20000
             credentials:
                 location: classpath:key.json  
             firestore:
-                project-id: ${PROJECT_ID:valid-might-365117}
+                project-id: ${PROJECT_ID:golden-pillar-371210}
                 enabled: true
     mail:
         host: smtp.gmail.com
         port: 465
-        username: <mail id>
-        password: abc
+        username: gsubhankar2018@gmail.com
+        password: ihvfxhdgqwmtmkzi
         properties:
             mail:
                 smtp:
@@ -51,7 +51,7 @@ gcp:
                 customerLoginData: Customer-Login-Data
                 userData: customer-details
     pubsub:
-        project-id: valid-might-365117
+        project-id: golden-pillar-371210
         topic:
             mms: connector-service-mms-topic
         subscription:

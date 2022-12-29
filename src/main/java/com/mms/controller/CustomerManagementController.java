@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = {"http://localhost:3000/"})
+//@CrossOrigin(origins = {"http://localhost:3000/"})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/internal/mms-portal/medicalManagementSystem/v1/customer")
